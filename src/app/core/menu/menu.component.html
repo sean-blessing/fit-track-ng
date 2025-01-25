@@ -1,0 +1,16 @@
+
+<nav>
+  <ul>
+    <li style="color:yellow; padding-left: 10px">
+      FT
+    </li>
+    @for (mi of menuItems; track $index) {
+    <li title="{{ mi.tooltip }}">
+      <a routerLink="{{ mi.href }}">{{ mi.display }}</a>
+    </li>
+    }
+    @if (welcomeMsg) {
+    <li class="text-right" style="color:yellow; padding-left: 80px">{{welcomeMsg}}</li>
+    }
+  </ul>
+</nav>

@@ -1,0 +1,73 @@
+<app-menu></app-menu>
+@if(exercise) {
+<div class="component">
+  <section class="heading">
+    <span class="page-title font-weight-bold font-italic">{{ title }}</span>
+    <span> | <a routerLink="/exercise-list">Return to List</a></span>
+  </section>
+  <main class="single">
+    <table class="table table-sm">
+      <tr>
+        <td>ID</td>
+        <td>{{ exercise.id }}</td>
+      </tr>
+      <tr>
+        <td>User:</td>
+        <td>
+          <input
+            [(ngModel)]="exercise.user.email"
+            class="rounded"
+            type="text"
+            disabled
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Activity:</td>
+        <td>
+          <select [(ngModel)]="exercise.activity" [compareWith]="compActivity">
+            @for(a of activities;track $index) {
+            <option [ngValue]="a">{{ a.name }}</option>
+            }
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Exercise Date:</td>
+        <td>
+          <input
+            [(ngModel)]="exercise.exerciseDate"
+            class="rounded"
+            type="date"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Miles:</td>
+        <td>
+          <input [(ngModel)]="exercise.miles" class="rounded" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>Ascent:</td>
+        <td>
+          <input [(ngModel)]="exercise.ascent" class="rounded" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>Calories Burned:</td>
+        <td>
+          <input
+            [(ngModel)]="exercise.caloriesBurned"
+            class="rounded"
+            type="text"
+          />
+        </td>
+      </tr>
+    </table>
+  </main>
+  <span>
+    <button (click)="save()" class="btn btn-sm btn-primary">Save</button>
+  </span>
+</div>
+}

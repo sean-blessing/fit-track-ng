@@ -1,0 +1,55 @@
+<app-menu></app-menu>
+<div class="p-4">
+  <h1>{{ title }}</h1>
+  <table>
+    <tr>
+      <td>User:</td>
+      <td>
+        {{ newExercise.user.lastName + ", " + newExercise.user.firstName }}
+      </td>
+    </tr>
+    <tr>
+      <td>Activity:</td>
+      <td>
+        <select [(ngModel)]="newExercise.activity" class="rounded">
+          @for (a of activitiesList; track $index) {
+          <option [ngValue]="a">
+            {{ a.name }}
+          </option>
+          }
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Exercise Date:</td>
+      <td>
+        <input [(ngModel)]="newExercise.exerciseDate" type="date" />
+      </td>
+    </tr>
+    <tr>
+      <td>Miles:</td>
+      <td>
+        <input [(ngModel)]="newExercise.miles" type="number" />
+      </td>
+    </tr>
+    <tr>
+      <td>Ascent:</td>
+      <td>
+        <input [(ngModel)]="newExercise.ascent" type="number" step="1" />
+      </td>
+    </tr>
+    <tr>
+      <td>Calories Burned:</td>
+      <td>
+        <input [(ngModel)]="newExercise.caloriesBurned" type="number" step="1" />
+      </td>
+    </tr>
+    <tr>
+      <td>Elapsed Time in Seconds:</td>
+      <td>
+        <input [(ngModel)]="minutes" type="number" step="1" /> : <input [(ngModel)]="seconds" type="number" step="1" />
+      </td>
+    </tr>
+  </table>
+  <button (click)="logExercise()">Log Exercise</button>
+</div>

@@ -1,3 +1,47 @@
 import { Routes } from '@angular/router';
+import { WeekListComponent } from './feature/week/week-list/week-list.component';
+import { WelcomeComponent } from './feature/welcome/welcome.component';
+import { ExerciseListComponent } from './feature/exercise/exercise-list/exercise-list.component';
+import { UserListComponent } from './feature/user/user-list/user-list.component';
+import { ActivityListComponent } from './feature/activity/activity-list/activity-list.component';
+import { NotFoundComponent } from './feature/not-found/not-found.component';
+import { UserLoginComponent } from './feature/user/user-login/user-login.component';
+import { ExerciseCreateComponent } from './feature/exercise/exercise-create/exercise-create.component';
+import { ActivityDetailComponent } from './feature/activity/activity-detail/activity-detail.component';
+import { ActivityEditComponent } from './feature/activity/activity-edit/activity-edit.component';
+import { UserCreateComponent } from './feature/user/user-create/user-create.component';
+import { UserDetailComponent } from './feature/user/user-detail/user-detail.component';
+import { UserEditComponent } from './feature/user/user-edit/user-edit.component';
+import { WeekCreateComponent } from './feature/week/week-create/week-create.component';
+import { WeekDetailComponent } from './feature/week/week-detail/week-detail.component';
+import { WeekEditComponent } from './feature/week/week-edit/week-edit.component';
+import { ActivityCreateComponent } from './feature/activity/activity-create/activity-create.component';
+import { ExerciseDetailComponent } from './feature/exercise/exercise-detail/exercise-detail.component';
+import { ExerciseEditComponent } from './feature/exercise/exercise-edit/exercise-edit.component';
+import { ExerciseDaysReportComponent } from './feature/exercise/exercise-days-report/exercise-days-report.component';
+import { ExerciseWeeksReportComponent } from './feature/exercise/exercise-weeks-report/exercise-weeks-report.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+    { path: 'welcome', component: WelcomeComponent },
+    { path: 'activity-list', component: ActivityListComponent },
+    { path: 'activity-create', component: ActivityCreateComponent },
+    { path: 'activity-detail/:id', component: ActivityDetailComponent },
+    { path: 'activity-edit/:id', component: ActivityEditComponent },
+    { path: 'exercise-list', component: ExerciseListComponent },
+    { path: 'exercise-day-rpt', component: ExerciseDaysReportComponent },
+    { path: 'exercise-week-rpt', component: ExerciseWeeksReportComponent },
+    { path: 'exercise-create', component: ExerciseCreateComponent },
+    { path: 'exercise-detail/:id', component: ExerciseDetailComponent },
+    { path: 'exercise-edit/:id', component: ExerciseEditComponent },
+    { path: 'user-login', component: UserLoginComponent },
+    { path: 'user-list', component: UserListComponent },
+    { path: 'user-create', component: UserCreateComponent },
+    { path: 'user-detail/:id', component: UserDetailComponent },
+    { path: 'user-edit/:id', component: UserEditComponent },
+    { path: 'week-list', component: WeekListComponent },
+    { path: 'week-create', component: WeekCreateComponent },
+    { path: 'week-detail/:id', component: WeekDetailComponent },
+    { path: 'week-edit/:id', component: WeekEditComponent },
+    { path: '**', component: NotFoundComponent }
+];

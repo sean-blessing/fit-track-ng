@@ -1,0 +1,28 @@
+<app-menu></app-menu>
+<div class="p-4">
+  <section class="heading">
+    <span class="page-title font-weight-bold font-italic">{{ title }}</span>
+  </section>
+  <table class="table table-striped table-hover">
+    <thead>
+      <th>#</th>
+      <th>User</th>
+      <th>Week #</th>
+      <th>DOW</th>
+      <th>Date</th>
+      <th>Activities</th>
+    </thead>
+    <tbody>
+      @for (line of reportLines; track $index) {
+      <tr>
+        <td>{{ line.rowNbr }}</td>
+        <td>{{ line.email }}</td>
+        <td>{{ line.weekNumber }}</td>
+        <td>{{ line.exerciseDate| date:'EEE' }}</td>
+        <td>{{ line.exerciseDate }}</td>
+        <td>{{ line.activities }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

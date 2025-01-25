@@ -1,0 +1,49 @@
+<app-menu></app-menu>
+@if(exercise) {
+<div class="component">
+  <section class="heading">
+      <span class="page-title font-weight-bold font-italic">{{title}}</span>
+      <span> | <a routerLink="/exercise-list">Return to List</a></span>
+  </section>
+  <main class="single">
+      <table class="table table-sm">
+          <tr>
+              <td>ID</td>
+              <td>{{exercise.id}}</td>
+          </tr>
+          <tr>
+              <td>User:</td>
+              <td><input [(ngModel)]="exercise.user.email" class="rounded" type="text" disabled></td>
+          </tr>
+          <tr>
+              <td>Activity:</td>
+              <td><input [(ngModel)]="exercise.activity.name" class="rounded" type="text" disabled></td>
+          </tr>
+          <tr>
+              <td>Week:</td>
+              <td><input [(ngModel)]="exercise.week.weekNumber" class="rounded" type="text" disabled></td>
+          </tr>
+          <tr>
+              <td>Exercise Date:</td>
+              <td><input [(ngModel)]="exercise.exerciseDate" class="rounded" type="date" disabled></td>
+          </tr>
+          <tr>
+            <td>Miles:</td>
+            <td><input [(ngModel)]="exercise.miles" class="rounded" type="text" disabled></td>
+        </tr>
+        <tr>
+            <td>Ascent:</td>
+            <td><input [(ngModel)]="exercise.ascent" class="rounded" type="text" disabled></td>
+        </tr>
+        <tr>
+            <td>Calories Burned:</td>
+            <td><input [(ngModel)]="exercise.caloriesBurned" class="rounded" type="text" disabled></td>
+        </tr>
+ </table>
+  </main>
+  <span>
+      <span><a routerLink="/exercise-edit/{{exercise.id}}" class="btn btn-sm btn-warning">Edit</a></span>
+      <span> | <button (click)="delete()" class="btn btn-sm btn-danger">Delete</button></span>
+  </span>
+</div>
+}

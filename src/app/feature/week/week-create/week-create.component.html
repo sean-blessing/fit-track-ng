@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+<div>
+  <span class="component-title">[{{ title }}]</span>
+  @if(!week) {
+  <p>Loading...</p>
+  } @else {
+  <div>
+    <main class="single">
+      <table class="table table-sm">
+        <tr>
+          <td>Year:</td>
+          <td>
+            <input [(ngModel)]="week.year" class="rounded" type="number" />
+          </td>
+        </tr>
+        <tr>
+          <td>Week Number:</td>
+          <td>
+            <input [(ngModel)]="week.weekNumber" class="rounded" type="number" />
+          </td>
+        </tr>
+        <tr>
+          <td>Start Date:</td>
+          <td>
+            <input [(ngModel)]="week.startDate" class="rounded" type="date" />
+          </td>
+        </tr>
+        <tr>
+          <td>End Date:</td>
+          <td>
+            <input [(ngModel)]="week.endDate" class="rounded" type="date" />
+          </td>
+        </tr>
+      </table>
+    </main>
+    <span>
+      <button (click)="save()" class="btn btn-sm btn-primary">Save</button>
+    </span>
+    @if(message) {
+    <p>{{ message }}</p>
+    }
+  </div>
+  }
+</div>

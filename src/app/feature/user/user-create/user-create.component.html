@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+<div>
+  <span class="component-title">[{{ title }}]</span>
+  @if(!user) {
+  <p>Loading...</p>
+  } @else {
+  <div>
+    <main class="single">
+      <table class="table table-sm">
+        <tr>
+          <td>Email:</td>
+          <td>
+            <input [(ngModel)]="user.email" class="rounded" type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td>
+            <input [(ngModel)]="user.password" class="rounded" type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>FirstName:</td>
+          <td>
+            <input [(ngModel)]="user.firstName" class="rounded" type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>Director:</td>
+          <td>
+            <input [(ngModel)]="user.lastName" class="rounded" type="text" />
+          </td>
+        </tr>
+      </table>
+    </main>
+    <span>
+      <button (click)="save()" class="btn btn-sm btn-primary">Save</button>
+    </span>
+    @if(message) {
+    <p>{{ message }}</p>
+    }
+  </div>
+  }
+</div>

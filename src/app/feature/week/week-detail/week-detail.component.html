@@ -1,0 +1,37 @@
+<app-menu></app-menu>
+@if(week) {
+<div class="component">
+  <section class="heading">
+      <span class="page-title font-weight-bold font-italic">{{title}}</span>
+      <span> | <a routerLink="/week-list">Return to List</a></span>
+  </section>
+  <main class="single">
+      <table class="table table-sm">
+          <tr>
+              <td>ID</td>
+              <td>{{week.id}}</td>
+          </tr>
+          <tr>
+              <td>Year:</td>
+              <td><input [(ngModel)]="week.year" class="rounded" type="number" disabled></td>
+          </tr>
+          <tr>
+              <td>Week Number:</td>
+              <td><input [(ngModel)]="week.weekNumber" class="rounded" type="number" disabled></td>
+          </tr>
+          <tr>
+              <td>Start Date:</td>
+              <td><input [(ngModel)]="week.startDate" class="rounded" type="date" disabled></td>
+          </tr>
+          <tr>
+              <td>End Date:</td>
+              <td><input [(ngModel)]="week.endDate" class="rounded" type="date" disabled></td>
+          </tr>
+       </table>
+  </main>
+  <span>
+      <span><a routerLink="/week-edit/{{week.id}}" class="btn btn-sm btn-warning">Edit</a></span>
+      <span> | <button (click)="delete()" class="btn btn-sm btn-danger">Delete</button></span>
+  </span>
+</div>
+}

@@ -1,0 +1,26 @@
+<app-menu></app-menu>
+<div>
+  <span class="component-title">[{{ title }}]</span>
+  @if(!activity) {
+  <p>Loading...</p>
+  } @else {
+  <div>
+    <main class="single">
+      <table class="table table-sm">
+        <tr>
+          <td>Activity Name:</td>
+          <td>
+            <input [(ngModel)]="activity.name" class="rounded" type="text" />
+          </td>
+        </tr>
+      </table>
+    </main>
+    <span>
+      <button (click)="save()" class="btn btn-sm btn-primary">Save</button>
+    </span>
+    @if(message) {
+    <p>{{ message }}</p>
+    }
+  </div>
+  }
+</div>
