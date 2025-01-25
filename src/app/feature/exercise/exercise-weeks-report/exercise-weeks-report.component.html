@@ -7,6 +7,8 @@
     <thead>
       <th>User</th>
       <th>Week #</th>
+      <th>Week Start</th>
+      <th>Week End</th>
       <th>Count</th>
     </thead>
     <tbody>
@@ -14,6 +16,8 @@
       <tr>
         <td>{{ line.email }}</td>
         <td>{{ line.weekNumber }}</td>
+        <td>{{ getWeek(line.weekNumber)?.startDate | date:'MM/dd/yy'}}</td>
+        <td>{{ getWeek(line.weekNumber)?.endDate | date:'MM/dd/yy'}}</td>
         @if (line.count < 3) {
         <td style="background-color: #ffff00">{{ line.count }}</td>
         } @else {
