@@ -1,0 +1,6 @@
+/* layout-only: keep table header pinned beneath the sticky section */
+.thead-sticky {
+  position: sticky;
+  top: var(--thead-top, 56px); /* adjust ~ to your section height */
+  z-index: 2;
+}

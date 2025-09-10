@@ -1,13 +1,15 @@
 <app-menu></app-menu>
-<div class="p-4 container mt-5">
-  <section class="heading">
-    <span class="page-title font-weight-bold font-italic">{{ title }}</span>
-    <a routerLink="/exercise-create">
-      <img width="20" height="20" src="assets/add-icon.png" title="Add New" />
-    </a>
+<div class="container">
+  <section class="sticky-top z-3 pt-5 pb-2">
+    <div class="d-flex align-items-center justify-content-between">
+      {{ title }}
+      <a routerLink="/exercise-create">
+        <img width="20" height="20" src="assets/add-icon.png" title="Add New" />
+      </a>
+    </div>
   </section>
   <table class="table table-striped table-hover">
-    <thead class="sticky-top">
+    <thead class="thead-sticky">
       <tr>
         <th scope="col">Id</th>
         <th scope="col">User</th>
