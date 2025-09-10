@@ -1,5 +1,5 @@
 <app-menu></app-menu>
-<div class="p-4">
+<div class="p-4 container mt-5">
   <section class="heading">
     <span class="page-title font-weight-bold font-italic">{{ title }}</span>
     <a routerLink="/exercise-create">
@@ -7,14 +7,17 @@
     </a>
   </section>
   <table class="table table-striped table-hover">
-    <thead>
-      <th>Id</th>
-      <th>User</th>
-      <th>Activity</th>
-      <th>Week</th>
-      <th>DOW</th>
-      <th>Date</th>
-      <th>Miles</th>
+    <thead class="sticky-top">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">User</th>
+        <th scope="col">Activity</th>
+        <th scope="col">Week</th>
+        <th scope="col">DOW</th>
+        <th scope="col">Date</th>
+        <th scope="col">Miles</th>
+        <th scope="col">Action</th>
+      </tr>
     </thead>
     <tbody>
       @for (e of exercises; track $index) {
@@ -23,7 +26,7 @@
         <td>{{ e.user.email }}</td>
         <td>{{ e.activity.name }}</td>
         <td>{{ e.week.weekNumber }}</td>
-        <td>{{ e.exerciseDate | date:'EEE' }}</td>
+        <td>{{ e.exerciseDate | date : "EEE" }}</td>
         <td>{{ e.exerciseDate }}</td>
         <td>{{ e.miles }}</td>
         <td>
