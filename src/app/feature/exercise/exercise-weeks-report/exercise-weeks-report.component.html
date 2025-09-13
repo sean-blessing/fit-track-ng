@@ -19,7 +19,9 @@
         <td>{{ getWeek(line.weekNumber)?.startDate | date:'MM/dd/yy'}}</td>
         <td>{{ getWeek(line.weekNumber)?.endDate | date:'MM/dd/yy'}}</td>
         @if (line.count < 3) {
-        <td style="background-color: #ffff00">{{ line.count }}</td>
+        <td style="background-color: #c13030">{{ line.count }}</td>
+        } @else if (line.count < 5) {
+        <td style="background-color: #fff200">{{ line.count }}</td>
         } @else {
         <td style="background-color: #00ff00">{{ line.count }}</td>
         }
