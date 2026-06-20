@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Activity } from '../model/activity';
@@ -9,7 +9,8 @@ const URL = 'http://localhost:8080/api/activities';
   providedIn: 'root',
 })
 export class ActivityService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
+  constructor() {}
 
   list(): Observable<Activity[]> {
     return this.http.get(URL + '/') as Observable<Activity[]>;
