@@ -20,6 +20,8 @@ export class SystemService {
   }
 
   userLoggedIn(): boolean {
-    return (this.loggedInUser.id != 0);
+    // old: return (this.loggedInUser.id != 0);
+    // If loggedInUser is null/undefined, it returns false instead of crashing
+    return (this.loggedInUser != null && this.loggedInUser.id != 0);
   }
 }

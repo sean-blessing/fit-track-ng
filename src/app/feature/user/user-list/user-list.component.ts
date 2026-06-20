@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../../../core/base/base.component';
 import { UserService } from '../../../service/user.service';
 import { Router, RouterLink } from '@angular/router';
@@ -15,12 +15,14 @@ import { MenuComponent } from "../../../core/menu/menu.component";
 })
 export class UserListComponent extends BaseComponent implements OnInit {
   title: string = "User List";
-  users: User[] = [];
+  // users!: User[];
+  users: User[] | null = null;
 
   constructor(
     private userSvc: UserService,
     sysSvc: SystemService,
-    router: Router
+    router: Router,
+    private cdr: ChangeDetectorRef
   ){
     super(sysSvc, router);
   }
@@ -28,6 +30,8 @@ export class UserListComponent extends BaseComponent implements OnInit {
   override ngOnInit(): void {
     this.subscription = this.userSvc.list().subscribe( (resp)=> {
       this.users = resp;
+      // This forces the component to realize the state has changed
+      this.cdr.detectChanges();
     });
   }
 

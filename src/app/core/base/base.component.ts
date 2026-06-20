@@ -26,7 +26,7 @@ export class BaseComponent implements OnInit, OnDestroy {
   }
 
   userLoggedIn(): boolean {
-    return this.loggedInUser.id != 0;
+    return this.loggedInUser != null && this.loggedInUser.id != 0;
   }
 
   checkLogin(): void {
