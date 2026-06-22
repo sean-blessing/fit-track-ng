@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from '../../../model/user';
 import { BaseComponent } from '../../../core/base/base.component';
 import { UserService } from '../../../service/user.service';
@@ -17,13 +17,14 @@ import { FormsModule } from '@angular/forms';
 export class UserDetailComponent extends BaseComponent implements OnInit, OnDestroy{
   title: string = 'User Detail';
   userId!: number;
-  user!: User;
+  user: User | null = null;
 
   constructor(
     private userSvc: UserService,
     sysSvc: SystemService,
     router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private cdr: ChangeDetectorRef
   ){
     super(sysSvc, router);
   }
@@ -37,6 +38,7 @@ export class UserDetailComponent extends BaseComponent implements OnInit, OnDest
     this.subscription = this.userSvc.getById(this.userId).subscribe({
       next: (resp) => {
         this.user = resp;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.log('Error retrieving user for id '+this.userId, err);
