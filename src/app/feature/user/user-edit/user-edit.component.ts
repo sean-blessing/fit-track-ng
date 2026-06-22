@@ -6,18 +6,19 @@ import { SystemService } from '../../../service/system.service';
 import { UserService } from '../../../service/user.service';
 import { MenuComponent } from "../../../core/menu/menu.component";
 import { FormsModule } from '@angular/forms';
+import { Observable, switchMap } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-edit',
   standalone: true,
-  imports: [MenuComponent, FormsModule],
+  imports: [MenuComponent, FormsModule, AsyncPipe],
   templateUrl: './user-edit.component.html',
   styleUrl: './user-edit.component.css'
 })
 export class UserEditComponent extends BaseComponent implements OnInit, OnDestroy {
   title: string = 'User Edit';
-  userId!: number;
-  user!: User;
+  user!: Observable<User>;
 
   constructor(
     private userSvc: UserService,
@@ -31,31 +32,15 @@ export class UserEditComponent extends BaseComponent implements OnInit, OnDestro
   override ngOnInit(): void {
     super.ngOnInit();
     this.checkLogin();
-    this.actRoute.params.subscribe((parms) => {
-      this.userId = parms['id'];
-    });
-    this.subscription = this.userSvc.getById(this.userId).subscribe({
-      next: (resp) => {
-        this.user = resp;
-        console.log('user: ', this.user);
-      },
-      error: (err) => {
-        console.log('Error retrieving user for id '+this.userId, err);
-      }
-    });
+    this.user = this.actRoute.params.pipe(
+      switchMap(params => this.userSvc.getById(params['id']))
+    );
   }
 
-  save(): void {
-    // NOTE: Check for existence of user email before save?
-    this.userSvc.edit(this.user).subscribe({
-      next: (resp) => {
-        this.user = resp;
-        this.router.navigateByUrl('/user-list');
-      },
-      error: (err) => {
-        console.log('Error updating user for id: ' + this.userId, err.message);
-      },
-      complete: () => {},
+  save(user: User): void {
+    this.userSvc.edit(user).subscribe({
+      next: () => this.router.navigateByUrl('/user-list'),
+      error: (err) => console.error(err)
     });
   }
 

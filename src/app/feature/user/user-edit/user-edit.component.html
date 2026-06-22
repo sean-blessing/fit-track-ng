@@ -1,47 +1,50 @@
 <app-menu></app-menu>
 <div class="p-4 container mt-5">
   <span class="component-title">[{{ title }}]</span>
-  @if(!user) {
-  <p>Loading...</p>
-  } @else {
+  @if (user | async; as u) {
+    <form (submit)="save(u)">
   <div>
     <main class="single">
       <table class="table table-sm">
         <tr>
           <td>Id:</td>
           <td>
-            <input [(ngModel)]="user.id" class="rounded" type="text" disabled />
+            <input [(ngModel)]="u.id" name="id" class="rounded" type="text" disabled />
           </td>
         </tr>
         <tr>
           <td>Email:</td>
           <td>
-            <input [(ngModel)]="user.email" class="rounded" type="text" />
+            <input [(ngModel)]="u.email" name="email" class="rounded" type="text" />
           </td>
         </tr>
         <tr>
           <td>Password:</td>
           <td>
-            <input [(ngModel)]="user.password" class="rounded" type="text" />
+            <input [(ngModel)]="u.password" name="password" class="rounded" type="text" />
           </td>
         </tr>
         <tr>
           <td>FirstName:</td>
           <td>
-            <input [(ngModel)]="user.firstName" class="rounded" type="text" />
+            <input [(ngModel)]="u.firstName" name="firstName" class="rounded" type="text" />
           </td>
         </tr>
         <tr>
           <td>LastName:</td>
           <td>
-            <input [(ngModel)]="user.lastName" class="rounded" type="text" />
+            <input [(ngModel)]="u.lastName" name="lastName" class="rounded" type="text" />
           </td>
         </tr>
       </table>
     </main>
     <span>
-      <button (click)="save()" class="btn btn-sm btn-primary">Edit</button>
+      <button type="submit" class="btn btn-sm btn-primary">Edit</button>
     </span>
   </div>
+  </form>
+  }
+  @else {
+    <p>Loading User Data...</p>
   }
 </div>
